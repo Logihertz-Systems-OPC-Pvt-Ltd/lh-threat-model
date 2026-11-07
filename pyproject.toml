@@ -1,0 +1,70 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lh-threat-model"
+version = "0.1.0"
+description = "Parses declarative system architecture and Data-Flow Diagram (DFD) manifests (.yaml/.json) across trust boundaries to automatically enumerate STRIDE threats (Spoofing, Tampering, Repudiation, Info Disclosure, DoS, EoP)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [
+    { name = "logihertzsystems", email = "ops@logihertz.com" },
+    { name = "Sameer Tawade (Creator, Founder, Director & Sole Developer)", email = "ops@logihertz.com" },
+]
+maintainers = [
+    { name = "Logihertz Systems (OPC) Private Limited", email = "ops@logihertz.com" },
+]
+keywords = [
+    "threat-modeling",
+    "stride",
+    "data-flow-diagram",
+    "security-architecture",
+    "devsecops",
+    "sarif",
+    "logihertz",
+]
+dependencies = [
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+    "pyyaml>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.4.0",
+    "bandit>=1.7.8",
+]
+
+
+[project.urls]
+Homepage = "https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-threat-model"
+Repository = "https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-threat-model"
+Documentation = "https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-threat-model#documentation"
+Issues = "https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-threat-model/issues"
+
+[project.scripts]
+lh-threat = "lh_threat_model.cli:app"
+lh-threat-model = "lh_threat_model.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lh_threat_model"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4"]
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv"]
+skips = ["B101"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --strict-markers"
+
