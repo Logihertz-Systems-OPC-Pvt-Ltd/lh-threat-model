@@ -1,0 +1,9 @@
+Package: lh-threat-model
+Version: 0.1.0
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: Sameer Tawade <ops@logihertz.com>
+Homepage: https://www.logihertz.com
+Description: lh-threat - STRIDE Multi-Vector Architecture Threat Quantification
+ Declarative architecture threat-modeling engine parsing system data-flow diagrams (DFDs) and trust boundaries to automatically synthesize STRIDE threat matrices, MITRE ATT&CK mappings, and SARIF reports.
